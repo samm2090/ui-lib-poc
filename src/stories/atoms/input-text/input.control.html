@@ -1,0 +1,14 @@
+<mat-form-field [appearance]="appearance" floatLabel="auto" [ngClass]="{'custom-mat-invalid-style': _errorStatus === true}">
+    <mat-label>{{ label }}</mat-label>
+    <input 
+    [disabled]="isControlInPendingStatus && _originalLabel === 'RUC'"
+    matInput 
+    [type]="calculateType()"
+    [placeholder]="placeholder? placeholder : _originalLabel"
+    [(ngModel)]="value" 
+    [autocomplete]="autocomplete"
+    [value]="value">
+    <button type="button" *ngIf="encrypted" mat-icon-button matSuffix (click)="toggleEncrypted()">
+        <mat-icon>{{_encryptedVisibility ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+</mat-form-field>
